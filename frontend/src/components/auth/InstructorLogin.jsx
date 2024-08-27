@@ -18,25 +18,39 @@ const InstructorLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Instructor Login</h2>
+    <form onSubmit={handleSubmit} className="space-y-8">
+    <h2 className="text-2xl font-semibold text-center mb-4">Instructor Login</h2>
+    <div>
       <input
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        className="emailinput w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+     <a href="/forgot-password" className=" px-4 text-blue-500 hover:underline">
+          Forgot Password?
+        </a>
+    </div>
+    <div>
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button type="submit">Login</button>
-      {error && <p>{error}</p>}
-    </form>
+    </div>
+    <button
+      type="submit"
+      className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      Login
+    </button>
+    {error && <p className="text-red-500 text-center">{error}</p>}
+  </form>
   );
 };
 
