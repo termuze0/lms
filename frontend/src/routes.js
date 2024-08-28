@@ -13,10 +13,10 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/admin/login" element={<AdminLoginPage />} />
     <Route path="/admin/register" element={<AdminRegisterPage />} />
-    <Route path="/instructor/login" element={<InstructorLoginPage />} />
-    <Route path="/instructor/register" element={<InstructorRegisterPage />} />
-    <Route path="/user/login" element={<UserLoginPage />} />
-    <Route path="/user/register" element={<UserRegisterPage />} />
+    <Route path="/i/login" element={<InstructorLoginPage />} />
+    <Route path="/i/register" element={<InstructorRegisterPage />} />
+    <Route path="/u/login" element={<UserLoginPage />} />
+    <Route path="/u/register" element={<UserRegisterPage />} />
     {/* Add other routes as needed */}
   </Routes>
 );

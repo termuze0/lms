@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../hooks/useAuth'; // Custom hook for authentication
+import useAuth  from '../../hooks/useAuth'; 
 
 const AdminLogin = () => {
   const { login } = useAuth();

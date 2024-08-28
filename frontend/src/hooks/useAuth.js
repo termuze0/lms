@@ -1,51 +1,80 @@
 import { useState } from 'react';
-import axios from 'axios'; // Assuming you are using axios for HTTP requests
+import axios from 'axios'; // Import axios
 
-const API_URL = 'http://localhost:8000/api'; // Replace with your actual API URL
+const useAuth = () => {
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState('');
 
-export const useAuth = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const login = async (email, password, role) => {
-    setLoading(true);
-    setError(null);
+  // User Login Function
+  const LoginUser = async (email, password) => {
     try {
-      const response = await axios.post(`${API_URL}/login`, { email, password, role });
-      // Assuming the response contains a token
-      const { token } = response.data;
-      localStorage.setItem('token', token); // Save the token in localStorage
-      // Optionally, save user details in localStorage or context
+      const response = await axios.post('/api/user/login', { email, password });
+      setUser(response.data.user);
+      setIsAuthenticated(true);
+      localStorage.setItem('token', response.data.token);
     } catch (err) {
-      setError(err.response ? err.response.data.message : 'An error occurred');
-    } finally {
-      setLoading(false);
+      setError('Invalid email or password');
+      throw err;
     }
   };
 
-  const register = async (email, password, name, role) => {
-    setLoading(true);
-    setError(null);
+  // User Registration Function
+  const RegisterUser = async (firstName, lastName, email, password) => {
     try {
-      await axios.post(`${API_URL}/register`, { email, password, name, role });
-      // Optionally, handle post-registration logic, such as redirecting to login page
+      const response = await axios.post('/api/user/register', { firstName, lastName, email, password });
+      setUser(response.data.user);
+      setIsAuthenticated(true);
+      localStorage.setItem('token', response.data.token);
     } catch (err) {
-      setError(err.response ? err.response.data.message : 'An error occurred');
-    } finally {
-      setLoading(false);
+      setError('Registration failed. Please try again.');
+      throw err;
     }
   };
 
+  // Instructor Login Function
+  const LoginInstructor = async (email, password) => {
+    try {
+      const response = await axios.post('/api/instructor/login', { email, password });
+      setUser(response.data.user);
+      setIsAuthenticated(true);
+      localStorage.setItem('token', response.data.token);
+    } catch (err) {
+      setError('Invalid email or password');
+      throw err;
+    }
+  };
+
+  // Instructor Registration Function
+  const RegisterInstructor = async (firstName, lastName, email, password, specialization) => {
+    try {
+      const response = await axios.post('/api/instructor/register', { firstName, lastName, email, password, specialization });
+      setUser(response.data.user);
+      setIsAuthenticated(true);
+      localStorage.setItem('token', response.data.token);
+    } catch (err) {
+      setError('Registration failed. Please try again.');
+      throw err;
+    }
+  };
+
+  // Logout Function
   const logout = () => {
+    setUser(null);
+    setIsAuthenticated(false);
     localStorage.removeItem('token');
-    // Optionally, handle post-logout logic, such as redirecting to login page
   };
 
   return {
-    login,
-    register,
+    user,
+    isAuthenticated,
+    error,
+    LoginUser,
+    RegisterUser,
+    LoginInstructor,
+    RegisterInstructor,
     logout,
-    loading,
-    error
   };
 };
+
+export default useAuth;

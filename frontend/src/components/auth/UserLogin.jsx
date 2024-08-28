@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../hooks/useAuth'; // Custom hook for authentication
-import "../../styles/UserLoginStyle.css"
+import useAuth from '../../hooks/useAuth'; 
+import "../../styles/UserLoginStyle.css";
+
 const UserLogin = () => {
-  const { login } = useAuth();
+  const { LoginUser } = useAuth(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -10,8 +11,8 @@ const UserLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password, 'user');
-      // Redirect or show success message
+      await LoginUser(email, password); 
+     
     } catch (err) {
       setError('Invalid email or password');
     }
@@ -27,11 +28,11 @@ const UserLogin = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="emailinput w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-       <a href="/forgot-password" className=" px-4 text-blue-500 hover:underline">
-            Forgot Password?
-          </a>
+        <a href="/forgot-password" className="px-4 text-blue-500 hover:underline">
+          Forgot Password?
+        </a>
       </div>
       <div>
         <input
