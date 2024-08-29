@@ -1,5 +1,5 @@
-##LMS (Learning Management System)
-#Overview
+## LMS (Learning Management System)
+# Overview
 The Learning Management System (LMS) is a web-based platform designed to facilitate online learning and course management. It offers a range of features for user management, course creation, assessment, content delivery, and more. This document provides an overview of the functional requirements and how to set up and use the LMS.
 
 Functional Requirements
@@ -60,7 +60,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/lms.git
+git clone https://github.com/termuze0/lms.git
 Navigate to the Project Directory:
 
 bash
