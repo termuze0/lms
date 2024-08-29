@@ -1,79 +1,99 @@
-import { useState } from 'react';
-import axios from 'axios'; // Import axios
+import { useState } from "react";
+import axios from "axios";
+
+const BASE_URL = "http://localhost:8000/api"; // Constant URL for the API
 
 const useAuth = () => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [error, setError] = useState('');
+  const [auth, setAuth] = useState(null); // Store authentication state
 
-  // User Login Function
-  const LoginUser = async (email, password) => {
+  const loginUser = async (email, password) => {
     try {
-      const response = await axios.post('/api/user/login', { email, password });
-      setUser(response.data.user);
-      setIsAuthenticated(true);
-      localStorage.setItem('token', response.data.token);
-    } catch (err) {
-      setError('Invalid email or password');
-      throw err;
+      const response = await axios.post(`${BASE_URL}/login`, {
+        email,
+        password,
+        role: "user",
+      });
+      setAuth(response.data);
+      // Store token or handle login success
+    } catch (error) {
+      throw new Error("Failed to login user");
     }
   };
 
-  // User Registration Function
-  const RegisterUser = async (firstName, lastName, email, password) => {
+  const registerUser = async (firstName, lastName, email, password) => {
     try {
-      const response = await axios.post('/api/user/register', { firstName, lastName, email, password });
-      setUser(response.data.user);
-      setIsAuthenticated(true);
-      localStorage.setItem('token', response.data.token);
-    } catch (err) {
-      setError('Registration failed. Please try again.');
-      throw err;
+      const response = await axios.post(`${BASE_URL}/register`, {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+        role: "user",
+      });
+      setAuth(response.data);
+      // Handle registration success
+    } catch (error) {
+      throw new Error("Failed to register user");
     }
   };
 
-  // Instructor Login Function
-  const LoginInstructor = async (email, password) => {
+  const loginInstructor = async (email, password) => {
     try {
-      const response = await axios.post('/api/instructor/login', { email, password });
-      setUser(response.data.user);
-      setIsAuthenticated(true);
-      localStorage.setItem('token', response.data.token);
-    } catch (err) {
-      setError('Invalid email or password');
-      throw err;
+      const response = await axios.post(`${BASE_URL}/login`, {
+        email,
+        password,
+        role: "instructor",
+      });
+      setAuth(response.data);
+      // Store token or handle login success
+    } catch (error) {
+      throw new Error("Failed to login instructor");
     }
   };
 
-  // Instructor Registration Function
-  const RegisterInstructor = async (firstName, lastName, email, password, specialization) => {
+  const registerInstructor = async (
+    firstName,
+    lastName,
+    email,
+    password,
+    specialization
+  ) => {
     try {
-      const response = await axios.post('/api/instructor/register', { firstName, lastName, email, password, specialization });
-      setUser(response.data.user);
-      setIsAuthenticated(true);
-      localStorage.setItem('token', response.data.token);
-    } catch (err) {
-      setError('Registration failed. Please try again.');
-      throw err;
+      const response = await axios.post(`${BASE_URL}/register`, {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+        specialization,
+        role: "instructor",
+      });
+      setAuth(response.data);
+      // Handle registration success
+    } catch (error) {
+      throw new Error("Failed to register instructor");
     }
   };
 
-  // Logout Function
-  const logout = () => {
-    setUser(null);
-    setIsAuthenticated(false);
-    localStorage.removeItem('token');
+  const loginAdmin = async (email, password) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/login`, {
+        email,
+        password,
+        role: "admin",
+      });
+      setAuth(response.data);
+      // Store token or handle login success
+    } catch (error) {
+      throw new Error("Failed to login admin");
+    }
   };
 
   return {
-    user,
-    isAuthenticated,
-    error,
-    LoginUser,
-    RegisterUser,
-    LoginInstructor,
-    RegisterInstructor,
-    logout,
+    auth,
+    loginUser,
+    registerUser,
+    loginInstructor,
+    registerInstructor,
+    loginAdmin,
   };
 };
 
