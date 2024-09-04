@@ -8,7 +8,7 @@ import InstructorLoginPage from './pages/InstructorLoginPage';
 import InstructorRegisterPage from './pages/InstructorRegisterPage';
 import UserLoginPage from './pages/UserLoginPage';
 import UserRegisterPage from './pages/UserRegisterPage';
-
+import UserHomePage from './pages/UserHomePage';
 const AppRoutes = () => (
   <Routes>
     <Route path="/admin/login" element={<AdminLoginPage />} />
@@ -17,6 +17,8 @@ const AppRoutes = () => (
     <Route path="/i/register" element={<InstructorRegisterPage />} />
     <Route path="/u/login" element={<UserLoginPage />} />
     <Route path="/u/register" element={<UserRegisterPage />} />
+    <Route path="/u/home" element={<UserHomePage />} />
+    
     {/* Add other routes as needed */}
   </Routes>
 );

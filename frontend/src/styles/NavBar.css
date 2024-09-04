@@ -1,0 +1,129 @@
+.navbar {
+    background-color: #96048a;
+    padding: 15px 0 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+
+.navbar-menu a {
+    margin-left: 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar-menu a:hover {
+    color: #1abc9c;
+}
+
+
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .navbar-profile a,
+    .navbar-auth a {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+
+.profile-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0; 
+    top: 100%; 
+    margin-top: 10px; 
+    width: 200px; 
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.dropdown-menu-item {
+    padding: 10px;
+}
+
+.dropdown-menu-item:not(:last-child) {
+    border-bottom: 1px solid #eaeaea;
+}
+
+
+.dropdown-menu-button {
+    background: none;
+    border: none;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu-button:hover {
+    background-color: #f1f1f1;
+}
+
+
+.dropdown-menu-link {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu-link:hover {
+    background-color: #f1f1f1;
+}
