@@ -1,7 +1,7 @@
 import React from "react";
 import UserLogin from "../components/auth/UserLogin";
 import SocialLogin from "../components/common/SocialLogin";
-import logo from "../assets/images/logo.svg"; // Path to your logo image
+import logo from "../assets/images/logo.jpeg"; 
 
 const UserLoginPage = () => {
   return (
