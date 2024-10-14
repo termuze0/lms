@@ -11,7 +11,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       await login(email, password, 'admin');
-      // Redirect or show success message
+      
     } catch (err) {
       setError('Invalid email or password');
     }

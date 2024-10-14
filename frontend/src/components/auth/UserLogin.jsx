@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth'; 
-import "../../styles/UserLoginStyle.css";
+
+import "../../style/UserLoginStyle.css";
+import SocialLogin from '../common/SocialLogin';
 
 const UserLogin = () => {
   const { LoginUser } = useAuth(); 
@@ -19,7 +21,8 @@ const UserLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="cont">
+      <form onSubmit={handleSubmit} className="space-y-8">
       <h2 className="text-2xl font-semibold text-center mb-4">User Login</h2>
       <div>
         <input
@@ -46,12 +49,19 @@ const UserLogin = () => {
       </div>
       <button
         type="submit"
-        className="w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="submitBtn w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         Login
       </button>
       {error && <p className="text-red-500 text-center">{error}</p>}
     </form>
+    <div className="or-container text-center my-4">
+    <span className="text-gray-500">Or</span>
+  </div>
+
+    <SocialLogin />
+    </div>
+    
   );
 };
 

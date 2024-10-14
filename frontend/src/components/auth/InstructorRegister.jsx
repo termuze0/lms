@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAuth  from '../../hooks/useAuth'; 
-import '../../styles/UserLoginStyle.css'; 
+
 
 const InstructorRegistration = () => {
   const { register } = useAuth(); 

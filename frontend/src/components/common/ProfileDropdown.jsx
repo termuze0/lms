@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import "../../styles/NavBar.css"
+// import "../../styles/NavBar.css"
 import logo from "../../assets/images/logo.svg";
 const ProfileDropdown = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);

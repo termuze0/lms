@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminLogin from '../components/auth/AdminLogin';
 import logo from '../assets/images/logo.svg'; // Path to your logo image
-import '../styles/AdminLoginPage.css'; // Import the custom CSS
+// import '../styles/AdminLoginPage.css'; // Import the custom CSS
 
 const AdminLoginPage = () => {
   return ( <div className="flex items-center justify-center min-h-screen bg-gray-100">

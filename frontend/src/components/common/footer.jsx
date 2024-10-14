@@ -6,7 +6,7 @@ const LMSFooter = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* About Section */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-sm">
@@ -14,7 +14,7 @@ const LMSFooter = () => {
             </p>
           </div>
           
-          {/* Links Section */}
+         
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul>
@@ -33,7 +33,7 @@ const LMSFooter = () => {
             </ul>
           </div>
           
-          {/* Contact Section */}
+          
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <p className="text-sm">
@@ -50,7 +50,7 @@ const LMSFooter = () => {
           
         </div>
         
-        {/* Bottom Section */}
+        
         <div className="mt-8 border-t border-gray-700 pt-4 text-sm text-center">
           © {new Date().getFullYear()} Your LMS Platform. All rights reserved.
         </div>

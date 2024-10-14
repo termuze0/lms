@@ -12,7 +12,7 @@ const AdminRegister = () => {
     e.preventDefault();
     try {
       await register(email, password, name, 'admin');
-      // Redirect or show success message
+      
     } catch (err) {
       setError('Registration failed');
     }

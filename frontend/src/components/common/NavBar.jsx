@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from './ProfileDropdown';
-import "../../styles/NavBar.css";
+
 import useAuth from '../../hooks/useAuth';
+import logo from '../../assets/images/logo.jpeg'
 
 const Navbar = () => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const isAuthenticated = true;
+    const isAuthenticated = false;
 
     const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
 
@@ -15,7 +16,7 @@ const Navbar = () => {
             <div className="navbar-container">
                 
                 <div className="flex items-center space-x-4">
-                    <Link to="/" className="navbar-logo">MyLogo</Link>
+                    <Link to="/" className="navbar-logo"><img src={logo} alt="" srcset="" /></Link>
                     <button className="navbar-hamburger" onClick={toggleMobileMenu}>
                         <span className="bar"></span>
                         <span className="bar"></span>
@@ -42,8 +43,8 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/register">Register</Link>
+                            <Link className='Authbtn' to="/login">Login</Link>
+                            <Link className='Authbtn' to="/register">Register</Link>
                         </>
                     )}
                 </div>
